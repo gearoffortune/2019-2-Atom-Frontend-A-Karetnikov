@@ -8,4 +8,5 @@
 
 export default function convertBytesToHuman(bytes) {
   // your solution goes here
+  return Number.isInteger(bytes)&&(bytes > 0) ? bytes : false
 }
