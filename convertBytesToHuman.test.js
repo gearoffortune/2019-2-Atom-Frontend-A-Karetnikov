@@ -10,13 +10,19 @@
  import convertBytesToHuman from './convertBytesToHuman';
 
 test('Возвращает false для неправильного типа данных', () => {
-  expect(convertBytesToHuman(/* ... */)).toBe(/* ... */)
+  expect(convertBytesToHuman('string')).toBe(false)
+  expect(convertBytesToHuman(true)).toBe(false)
+  expect(convertBytesToHuman({value: 5})).toBe(false)
   // ...
 });
 
 test('Возвращает корректное значение для чисел', () => {
-  expect(convertBytesToHuman(/* ... */)).toBe(/* ... */)
+  expect(convertBytesToHuman(5)).toBe(5)
   // ...
 });
 
 // другая группа проверок
+
+test('Возвращает false для отрицательных чисел', () => {
+  expect(convertBytesToHuman(-5)).toBe(false);
+})
