@@ -3,7 +3,7 @@
   "description": "Mail.Ru Group Frontend Atom course, 2019",
   "version": "0.1.0",
   "author": "alex karetnikov",
-  "homepage": "https://gearoffortune.github.io//2019-2-Atom-Frontend-A-Karetnikov/",
+  "homepage": "https://gearoffortune.github.io/2019-2-Atom-Frontend-A-Karetnikov/",
   "dependencies": {
     "@csstools/normalize.css": "^10.1.0",
     "@emotion/core": "^10.0.14",
