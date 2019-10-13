@@ -1,12 +1,18 @@
 const template = document.createElement('template');
 template.innerHTML = `
     <style>
+
         form-input {
             width: 100%;
         }
 
         .result {
-            color: red;
+            --bgcolour: #f5f5f5;
+            background-color: var(--bgcolour);
+        }
+
+        .message-container {
+            margin: 5px;
         }
 
         input[type=submit] {
@@ -19,29 +25,61 @@ template.innerHTML = `
     </form>
 `;
 
+const userName = 'Me';
+
 class MessageForm extends HTMLElement {
-    constructor () {
-        super();
-        this._shadowRoot = this.attachShadow({ mode: 'open' });
-        this._shadowRoot.appendChild(template.content.cloneNode(true));
-        this.$form = this._shadowRoot.querySelector('form');
-        this.$input = this._shadowRoot.querySelector('form-input');
-        this.$message = this._shadowRoot.querySelector('.result');
+  constructor() {
+    super();
+    this._shadowRoot = this.attachShadow({ mode: 'open' });
+    this._shadowRoot.appendChild(template.content.cloneNode(true));
+    this.$form = this._shadowRoot.querySelector('form');
+    this.$input = this._shadowRoot.querySelector('form-input');
+    this.$messages = this._shadowRoot.querySelector('.result');
 
-        this.$form.addEventListener('submit', this._onSubmit.bind(this));
-        this.$form.addEventListener('keypress', this._onKeyPress.bind(this));
-    }
+    this.$form.addEventListener('submit', this._onSubmit.bind(this));
+    this.$form.addEventListener('keypress', this._onKeyPress.bind(this));
 
-    _onSubmit (event) {
-        event.preventDefault();
-        this.$message.innerText = this.$input.value;
-    }
+    this._loadLocalStorage();
+    this._rederMessages();
+  }
 
-    _onKeyPress (event) {
-        if (event.keyCode == 13) {
-            this.$form.dispatchEvent(new Event('submit'));
-        }
+  _onSubmit(event) {
+    event.preventDefault();
+    this._newMessage(this.$input.value, userName);
+    this._saveLocalStorage();
+    this._rederMessages();
+  }
+
+  _onKeyPress(event) {
+    if (event.keyCode === 13) {
+      this.$form.dispatchEvent(new Event('submit'));
     }
+  }
+
+  _newMessage(value, user) {
+    const message = { value, user, date: (Date.now()) };
+    this.messages.push(message);
+  }
+
+  _loadLocalStorage() {
+    this.messages = JSON.parse(localStorage.getItem('messages')) || [];
+  }
+
+  _saveLocalStorage() {
+    localStorage.setItem('messages', JSON.stringify(this.messages));
+  }
+
+  _rederMessages() {
+    this.$messages.innerHTML = '';
+    this.messages.forEach((elem) => {
+      const newMessage = document.createElement('div');
+      newMessage.className = 'message-container';
+      const date = new Date(elem.date);
+
+      newMessage.innerHTML = `<single-message user="${elem.user}" message="${elem.value}" time="${date.getHours()}:${date.getMinutes()}"></single-message>`;
+      this.$messages.appendChild(newMessage);
+    });
+  }
 }
 
 customElements.define('message-form', MessageForm);
