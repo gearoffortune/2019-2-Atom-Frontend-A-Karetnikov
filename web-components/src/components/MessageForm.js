@@ -48,6 +48,7 @@ class MessageForm extends HTMLElement {
     this._newMessage(this.$input.value, userName);
     this._saveLocalStorage();
     this._rederMessages();
+    this.$input.reset();
   }
 
   _onKeyPress(event) {
@@ -76,7 +77,7 @@ class MessageForm extends HTMLElement {
       newMessage.className = 'message-container';
       const date = new Date(elem.date);
 
-      newMessage.innerHTML = `<single-message user="${elem.user}" message="${elem.value}" time="${date.getHours()}:${date.getMinutes()}"></single-message>`;
+      newMessage.innerHTML = `<single-message user="${elem.user}" message="${elem.value}" time="${date.toTimeString().slice(0, 5)}"></single-message>`;
       this.$messages.appendChild(newMessage);
     });
   }
