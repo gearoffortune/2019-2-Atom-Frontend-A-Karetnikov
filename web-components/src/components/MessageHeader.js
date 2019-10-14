@@ -40,7 +40,6 @@ class MessageHeader extends HTMLElement {
     this._shadowRoot.appendChild(template.content.cloneNode(true));
     this._username = this.getAttribute('username');
     this._shadowRoot.querySelector('.text--username').textContent = this._username;
-
   }
 }
 

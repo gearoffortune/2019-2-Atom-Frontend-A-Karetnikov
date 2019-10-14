@@ -50,7 +50,7 @@ class FormInput extends HTMLElement {
   }
 
   reset() {
-      this.$input.value = '';
+    this.$input.value = '';
   }
 }
 
