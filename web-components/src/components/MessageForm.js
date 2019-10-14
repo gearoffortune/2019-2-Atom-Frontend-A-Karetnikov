@@ -1,14 +1,26 @@
 const template = document.createElement('template');
 template.innerHTML = `
     <style>
-
+        :root {
+          height: 100vh;
+        }
         form-input {
-            width: 100%;
+          display: block;
+        }
+
+        message-header {
+          position: fixed;
+          top: 0;
+          width: 100vw;
+          z-index: 1;
         }
 
         .result {
             --bgcolour: #f5f5f5;
             background-color: var(--bgcolour);
+            padding-top: 48px;
+            height: calc(100vh - 48px - 36px);
+            overflow-y: auto;
         }
 
         .message-container {
@@ -20,6 +32,8 @@ template.innerHTML = `
         }
     </style>
     <form>
+        
+      <message-header username="Me"></message-header>
         <div class="result"></div>
         <form-input name="message-text" placeholder="Введите сообщеине"></form-input>
     </form>
