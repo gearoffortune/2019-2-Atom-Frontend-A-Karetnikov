@@ -18,7 +18,7 @@ template.innerHTML = `
             font-size: 1.5rem;
             padding: 5px 0;
         }
-        .input-clip {
+        .input-clip > svg {
           transform: rotate(90deg);
           height: 1em;
           margin-right: 10px;
@@ -26,7 +26,7 @@ template.innerHTML = `
     </style>
     <div class="input-block">
       <input type="text">
-      <img class="input-clip" src="${clipSVG}" >
+      <div class="input-clip">${clipSVG}</div>
     </div>
 `;
 
