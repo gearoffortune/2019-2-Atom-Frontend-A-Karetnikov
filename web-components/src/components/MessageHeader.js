@@ -1,3 +1,8 @@
+import backSVG from '../assets/back.svg';
+import clipSVG from '../assets/clip.svg';
+import moreSVG from '../assets/more.svg';
+import searchSVG from '../assets/search.svg';
+
 const template = document.createElement('template');
 template.innerHTML = `
 <style>
@@ -12,6 +17,10 @@ template.innerHTML = `
   .iconcontainer {
     margin: 0 10px;
   }
+
+  .iconcontainer > svg {
+    height: 32px;
+  }
   .right-end > .iconcontainer {
     display: inline-block;
   }
@@ -22,14 +31,14 @@ template.innerHTML = `
   }
 </style>
 <div class="header">
-  <div class="iconcontainer iconcontainer--back"><img height="32" src="../../assets/back.svg"></div>
+  <div class="iconcontainer iconcontainer--back">${backSVG}</div>
   <div class="person">
-    <div class="imagecontainer imagecontainer--avatar><img height="32" src="../../assets/clip.svg"></div>
+    <div class="imagecontainer imagecontainer--avatar>${clipSVG}</div>
     <h2 class="text--username"></h2>
   </div>
   <div class="right-end">
-    <div class="iconcontainer iconcontainer--search"><img height="32" src="../../assets/search.svg"></div>
-    <div class="iconcontainer iconcontainer--more"><img height="32" src="../../assets/more.svg"></div>
+    <div class="iconcontainer iconcontainer--search">${searchSVG}</div>
+    <div class="iconcontainer iconcontainer--more">${moreSVG}</div>
   </div>
 </div>`;
 

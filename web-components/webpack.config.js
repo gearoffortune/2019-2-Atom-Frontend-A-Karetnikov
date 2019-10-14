@@ -54,6 +54,13 @@ module.exports = {
                     },
                 ],
             },
+            {
+                test: /\.svg$/,
+                include: SRC_PATH,
+                use: [
+                    {loader: 'svg-inline-loader'},
+                ],
+            },
         ],
     },
     plugins: [

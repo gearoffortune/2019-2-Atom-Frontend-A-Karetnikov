@@ -1,3 +1,5 @@
+import clipSVG from '../assets/clip.svg';
+
 const template = document.createElement('template');
 template.innerHTML = `
     <style>
@@ -24,7 +26,7 @@ template.innerHTML = `
     </style>
     <div class="input-block">
       <input type="text">
-      <img class="input-clip" src="../../assets/clip.svg" >
+      <img class="input-clip" src="${clipSVG}" >
     </div>
 `;
 
