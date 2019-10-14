@@ -11,8 +11,21 @@ template.innerHTML = `
             display: inline-block;
             border: 1px solid rgba(25, 25, 25, 0.32);
         }
+        .input-block {
+            display: flex;
+            font-size: 1.5rem;
+            padding: 5px 0;
+        }
+        .input-clip {
+          transform: rotate(90deg);
+          height: 1em;
+          margin-right: 10px;
+        }
     </style>
-    <input type="text">
+    <div class="input-block">
+      <input type="text">
+      <img class="input-clip" src="../../assets/clip.svg" >
+    </div>
 `;
 
 class FormInput extends HTMLElement {
