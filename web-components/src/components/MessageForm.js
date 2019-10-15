@@ -59,10 +59,12 @@ class MessageForm extends HTMLElement {
 
   _onSubmit(event) {
     event.preventDefault();
-    this._newMessage(this.$input.value, userName);
-    this._saveLocalStorage();
-    this._rederMessages();
-    this.$input.reset();
+    if (this.$input.value.length !== 0) {
+      this._newMessage(this.$input.value, userName);
+      this._saveLocalStorage();
+      this._rederMessages();
+      this.$input.reset();
+    }
   }
 
   _onKeyPress(event) {
