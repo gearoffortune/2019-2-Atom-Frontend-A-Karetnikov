@@ -64,7 +64,12 @@ class MessageForm extends HTMLElement {
       this._saveLocalStorage();
       this._rederMessages();
       this.$input.reset();
+      this._scrollToLast();
     }
+  }
+
+  _scrollToLast() {
+    this.$messages.lastChild.scrollIntoView({behavior: 'smooth'});
   }
 
   _onKeyPress(event) {
