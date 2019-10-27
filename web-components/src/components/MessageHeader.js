@@ -33,7 +33,7 @@ template.innerHTML = `
 <div class="header">
   <div class="iconcontainer iconcontainer--back">${backSVG}</div>
   <div class="person">
-    <div class="imagecontainer imagecontainer--avatar">${clipSVG}</div>
+    <div class="imagecontainer imagecontainer--avatar"></div>
     <h2 class="text--username"></h2>
   </div>
   <div class="right-end">
