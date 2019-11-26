@@ -10,66 +10,80 @@ const SRC_PATH = path.resolve(__dirname, 'src');
 const BUILD_PATH = path.resolve(__dirname, 'build');
 
 module.exports = {
-    context: SRC_PATH,
-    entry: {
-        index: './index.js',
-    },
-    output: {
-        path: BUILD_PATH,
-        filename: 'bundle.js'
-    },
-    module: {
-        strictExportPresence: true,
-        rules: [
-            {
-                test: /\.js$/,
-                include: SRC_PATH,
-                use: [
-                    {
-                        loader: 'babel-loader',
-                        options: {
-                            presets: ['@babel/preset-env']
-                        },
-                    },
-                ],
+  context: SRC_PATH,
+  entry: {
+    index: './index.js',
+  },
+  output: {
+    path: BUILD_PATH,
+    filename: 'bundle.js',
+  },
+  module: {
+    strictExportPresence: true,
+    rules: [
+      {
+        test: /\.js$/,
+        include: SRC_PATH,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
             },
-            {
-                test: /shadow\.css$/,
-                include: SRC_PATH,
-                use: [
-                    {
-                        loader: 'css-loader'
-                    },
-                ],
-            },
-            {
-                test: /index\.css$/,
-                include: SRC_PATH,
-                use: [
-                    {
-                        loader: MiniCSSExtractPlugin.loader,
-                    },
-                    {
-                        loader: 'css-loader',
-                    },
-                ],
-            },
-            {
-                test: /\.svg$/,
-                include: SRC_PATH,
-                use: [
-                    {loader: 'svg-inline-loader'},
-                ],
-            },
+          },
         ],
-    },
-    plugins: [
-        new MiniCSSExtractPlugin({
-            filename: 'style.css',
-        }),
-        new HTMLWebpackPlugin({
-            filename: 'index.html',
-            template: './index.html'
-        })
-    ]
+      },
+      {
+        test: /shadow\.css$/,
+        include: SRC_PATH,
+        use: [
+          {
+            loader: 'css-loader',
+          },
+        ],
+      },
+      {
+        test: /index\.css$/,
+        include: SRC_PATH,
+        use: [
+          {
+            loader: MiniCSSExtractPlugin.loader,
+          },
+          {
+            loader: 'css-loader',
+          },
+        ],
+      },
+      {
+        test: /\.svg$/,
+        include: SRC_PATH,
+        use: [
+          { loader: 'svg-inline-loader' },
+        ],
+      },
+      {
+        test: /\.png$/,
+        include: SRC_PATH,
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              disable: true,
+            }
+          },
+        ],
+      },
+    ],
+  },
+  plugins: [
+    new MiniCSSExtractPlugin({
+      filename: 'style.css',
+    }),
+    new HTMLWebpackPlugin({
+      filename: 'index.html',
+      template: './index.html',
+    }),
+  ],
+  devtool: 'cheap-module-source-map',
 };
