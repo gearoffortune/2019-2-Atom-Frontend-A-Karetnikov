@@ -1,5 +1,4 @@
 import backSVG from '../assets/back.svg';
-import clipSVG from '../assets/clip.svg';
 import moreSVG from '../assets/more.svg';
 import searchSVG from '../assets/search.svg';
 

@@ -1,5 +1,6 @@
 import hamburger from '../assets/hamburger.svg';
 import search from '../assets/search.svg';
+
 const template = document.createElement('template');
 template.innerHTML = `
     <style>
@@ -25,14 +26,14 @@ template.innerHTML = `
         <h1>Messenger</h1>
         <button class="button button--search">${search}</button>
     </header>
-`
+`;
 
 class MainHeader extends HTMLElement {
-    constructor() {
-        super();
-        this._shadowRoot = this.attachShadow({ mode: 'open' });
-        this._shadowRoot.appendChild(template.content.cloneNode(true));
-    }
+  constructor() {
+    super();
+    this._shadowRoot = this.attachShadow({ mode: 'open' });
+    this._shadowRoot.appendChild(template.content.cloneNode(true));
+  }
 }
 
 customElements.define('main-header', MainHeader);

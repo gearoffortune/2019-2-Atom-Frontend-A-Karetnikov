@@ -69,7 +69,7 @@ class MessageForm extends HTMLElement {
   }
 
   _scrollToLast() {
-    this.$messages.lastChild.scrollIntoView({behavior: 'smooth'});
+    this.$messages.lastChild.scrollIntoView({ behavior: 'smooth' });
   }
 
   _onKeyPress(event) {
