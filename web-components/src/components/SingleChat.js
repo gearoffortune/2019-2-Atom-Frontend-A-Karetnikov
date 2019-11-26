@@ -20,8 +20,20 @@ template.innerHTML = `
         .single-chat {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             border-bottom: 1px solid #666666;
+            margin-top: 4px;
         }
+
+        .single-chat__avatar {
+          margin-left: 15px;
+        }
+
+        .single-chat__avatar > img {
+          clip-path: circle(48px);
+          height: 96px;
+        }
+
         .single-chat__name-and-message {
             flex-grow: 1;
         }
@@ -29,10 +41,23 @@ template.innerHTML = `
           color: #666666;
           overflow: hidden;
           text-overflow: ellipsis;
-          height: 1em;
         }
+
+        .single-chat__unread-and-time {
+          margin-right: 20px;
+          font-variant-numeric: tabular-nums;
+        }
+
+        .message-time {
+          text-align: right;
+        }
+
+        .unread-count {
+          text-align: right;
+        }
+
         .unread-count > svg {
-          height: 48px;
+          height: 2em;
           fill: #8e24aa;
         }
         .single-chat__avatar {
