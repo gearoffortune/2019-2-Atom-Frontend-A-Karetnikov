@@ -50,6 +50,8 @@ class MessageForm extends HTMLElement {
     this.$input = this._shadowRoot.querySelector('form-input');
     this.$messages = this._shadowRoot.querySelector('.result');
 
+    this.user = this.getAttribute('user');
+
     this.$form.addEventListener('submit', this._onSubmit.bind(this));
     this.$form.addEventListener('keypress', this._onKeyPress.bind(this));
 
@@ -84,7 +86,7 @@ class MessageForm extends HTMLElement {
   }
 
   _loadLocalStorage() {
-    this.messages = JSON.parse(localStorage.getItem('messages')) || [];
+    this.messages = JSON.parse(localStorage.getItem('chatdata')).chats.filter((x) => x.users[0].userName === this.user)[0].messages;
   }
 
   _saveLocalStorage() {

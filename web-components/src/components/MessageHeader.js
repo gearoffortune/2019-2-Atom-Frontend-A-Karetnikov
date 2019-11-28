@@ -48,6 +48,11 @@ class MessageHeader extends HTMLElement {
     this._shadowRoot.appendChild(template.content.cloneNode(true));
     this._username = this.getAttribute('username');
     this._shadowRoot.querySelector('.text--username').textContent = this._username;
+
+    // eslint-disable-next-line no-unused-vars
+    this._shadowRoot.querySelector('.iconcontainer--back').addEventListener('click', () => {
+      document.body.innerHTML = '<main-screen></main-screen';
+    });
   }
 }
 

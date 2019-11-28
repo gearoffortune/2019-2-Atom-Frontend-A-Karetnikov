@@ -24,6 +24,11 @@ class MainScreen extends HTMLElement {
     this._chats = this._shadowRoot.querySelector('.all-chats');
     this._loadLocalStorage();
     this._loadChats();
+    this._saveLocalStorage();
+
+    this._chats.firstChild.addEventListener('click', () => {
+      document.body.innerHTML = '<message-form user="Me"><message-form>';
+    });
   }
 
   _loadLocalStorage() {
@@ -38,8 +43,8 @@ class MainScreen extends HTMLElement {
               value: 'try',
               user: 'Me',
               date: 1572186026733,
-              isClientMessage: false,
-              isRead: false,
+              isClientMessage: true,
+              isRead: true,
               isRecieved: true,
             }],
         },
@@ -53,7 +58,7 @@ class MainScreen extends HTMLElement {
             user: 'Me',
             date: 1574771940093,
             isClientMessage: true,
-            isRead: true,
+            isRead: false,
             isRecieved: true,
           }],
         },
@@ -66,7 +71,7 @@ class MainScreen extends HTMLElement {
             value: "What's your ETA?",
             user: 'Me',
             date: 1574777062635,
-            isClientMessage: true,
+            isClientMessage: false,
             isRead: false,
             isRecieved: true,
           }],
